@@ -4,12 +4,12 @@
       <h2 class="login-title">로그인</h2>
       <form @submit.prevent="login" class="login-form">
         <div class="input-group">
-          <label for="username">아이디</label>
-          <input type="text" id="username" v-model="username" placeholder="아이디를 입력하세요" required />
+          <label for="id">아이디</label>
+          <input type="text" id="id" v-model="id" placeholder="아이디를 입력하세요" required />
         </div>
         <div class="input-group">
-          <label for="password">비밀번호</label>
-          <input type="password" id="password" v-model="password" placeholder="비밀번호를 입력하세요" required />
+          <label for="pw">비밀번호</label>
+          <input type="password" id="pw" v-model="pw" placeholder="비밀번호를 입력하세요" required />
         </div>
         <button type="submit" class="login-btn">로그인</button>
       </form>
@@ -19,21 +19,33 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-  name: 'LoginPage',
-  // 컴포넌트 렌더링 시 데이터를 바인딩, 모델부분
+  name: "LoginPage",
   data() {
     return {
-      username: '',
-      password: ''
+      id: "",
+      pw: "",
     };
   },
   methods: {
-    login() {
-      // 로그인 로직을 여기에 추가
-      alert(`아이디: ${this.username}, 비밀번호: ${this.password}`);
-    }
-  }
+    async login() {
+      try {
+        // 로그인 요청
+        const response = await axios.post("/login/userLogin", {
+          id: this.id,
+          pw: this.pw,
+        });
+        // 서버 응답 처리
+        console.log('서버 응답:', response.data);
+        alert(`서버에서 받은 응답: ${response.data}`);
+      } catch (error) {
+        console.error("로그인 오류:", error);
+        alert("로그인 중 오류가 발생했습니다.");
+      }
+    },
+  },
 };
 </script>
 
