@@ -39,10 +39,13 @@ export default {
         });
         // 서버 응답 처리
         console.log('서버 응답:', response.data);
-        alert(`서버에서 받은 응답: ${response.data}`);
+        //alert(`서버에서 받은 응답: ${response.data}`);
+
+        this.$router.push({ name: 'User' });
+        
       } catch (error) {
         console.error("로그인 오류:", error);
-        alert("로그인 중 오류가 발생했습니다.");
+        // alert("로그인 중 오류가 발생했습니다.");
       }
     },
   },

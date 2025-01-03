@@ -1,14 +1,16 @@
-// Vue Router의 인스턴스를 생성하는 함수 
-// Vue Router의 **히스토리 모드(history mode)**를 설정하는 함수
-import { createRouter, createWebHistory } from 'vue-router';
-// HomePage 이름의 컴포넌트를 ./components/HomePage.vue 경로에서 찾아서 임포트
-import HomePage from './components/HomePage.vue';
-import LoginPage from './components/LoginPage.vue';
+// src/router/index.js
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import HomePage from '../components/HomePage.vue';
+import LoginPage from '../components/LoginPage.vue';
+import UserPage from '../components/UserPage.vue';
+
+// VueRouter 사용 등록
+Vue.use(VueRouter);
 
 const routes = [
   {
     path: '/',
-    // 라우트의 고유한 이름
     name: 'Home',
     component: HomePage,
   },
@@ -17,10 +19,15 @@ const routes = [
     name: 'Login',
     component: LoginPage,
   },
+  {
+    path: '/userInfo',
+    name: 'User',
+    component: UserPage,
+  },
 ];
 
-const router = createRouter({
-  history: createWebHistory(),
+const router = new VueRouter({
+  mode: 'history', // 브라우저의 히스토리 모드 사용
   routes,
 });
 
