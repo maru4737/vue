@@ -26,7 +26,7 @@ export default {
     };
   },
   created() {
-    this.fetchUserInfo();
+    //this.fetchUserInfo();
   },
   methods: {
     async fetchUserInfo() {

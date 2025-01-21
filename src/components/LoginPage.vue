@@ -8,8 +8,8 @@
           <input type="text" id="id" v-model="id" placeholder="아이디를 입력하세요" required />
         </div>
         <div class="input-group">
-          <label for="pw">비밀번호</label>
-          <input type="password" id="pw" v-model="pw" placeholder="비밀번호를 입력하세요" required />
+          <label for="password">비밀번호</label>
+          <input type="password" id="password" v-model="password" placeholder="비밀번호를 입력하세요" required />
         </div>
         <button type="submit" class="login-btn">로그인</button>
       </form>
@@ -26,7 +26,7 @@ export default {
   data() {
     return {
       id: "",
-      pw: "",
+      password: "",
     };
   },
   methods: {
@@ -35,13 +35,27 @@ export default {
         // 로그인 요청
         const response = await axios.post("/login/userLogin", {
           id: this.id,
-          pw: this.pw,
+          password: this.password,
         });
         // 서버 응답 처리
         console.log('서버 응답:', response.data);
         //alert(`서버에서 받은 응답: ${response.data}`);
 
+        const token = response.data;
+
+      if (token) {
+        // 토큰을 로컬 스토리지에 저장
+        localStorage.setItem("authToken", token);
+
+        // 서버 응답 처리
+        console.log('서버 응답:', response.data);
+        // 성공 시 라우팅
         this.$router.push({ name: 'User' });
+      }else{
+        alert("로그인 실패: 유효한 토큰이 없습니다.");
+      }
+
+     
         
       } catch (error) {
         console.error("로그인 오류:", error);

@@ -4,6 +4,7 @@
     <!-- 로그인 페이지로 이동하는 링크 -->
     <router-link to="/login" class="login-link">Go to Login Page</router-link>  
     <router-link to="/userInfo" class="login-link">Go to User Page</router-link>  
+    <router-link to="/gov24" class="login-link">Go to User gov24</router-link>  
   </div>
 </template>
 

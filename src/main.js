@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import App from './App.vue';
-import router from './router/index'; // 라우터 설정 가져오기
+import router from './router'; // 라우터 설정 가져오기
 import axios from './plugins/axios'; // Axios 설정 파일 가져오기
 
 // 개발환경 표시

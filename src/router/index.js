@@ -4,6 +4,8 @@ import VueRouter from 'vue-router';
 import HomePage from '../components/HomePage.vue';
 import LoginPage from '../components/LoginPage.vue';
 import UserPage from '../components/UserPage.vue';
+import Gov24Page from '../components/indexPage.vue';
+
 
 // VueRouter 사용 등록
 Vue.use(VueRouter);
@@ -24,6 +26,12 @@ const routes = [
     name: 'User',
     component: UserPage,
   },
+  {
+    path: '/gov24',
+    name: 'Gov24',
+    component: Gov24Page,
+  },
+
 ];
 
 const router = new VueRouter({
